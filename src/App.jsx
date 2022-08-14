@@ -19,6 +19,7 @@ import { default as store } from './common/redux/store';
  */
 import theme from './styles/theme';
 import createEmotionCache from './common/utils/createEmotionCache';
+import AppRoutes from './routes/AppRoutes';
 
 const clientSideEmotionCache = createEmotionCache();
 
@@ -28,7 +29,7 @@ function App({ emotionCache = clientSideEmotionCache }) {
       <ThemeProvider theme={theme}>
         <Provider store={store}>
           <CssBaseline />
-          POKEDEX
+          <AppRoutes />
         </Provider>
       </ThemeProvider>
     </CacheProvider>
