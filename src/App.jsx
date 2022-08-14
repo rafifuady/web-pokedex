@@ -9,6 +9,12 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { CacheProvider } from '@emotion/react';
 
 /**
+ * redux Imports
+ */
+import { Provider } from 'react-redux';
+import { default as store } from './common/redux/store';
+
+/**
  * custom file Imports
  */
 import theme from './styles/theme';
@@ -20,8 +26,10 @@ function App({ emotionCache = clientSideEmotionCache }) {
   return (
     <CacheProvider value={emotionCache}>
       <ThemeProvider theme={theme}>
-        <CssBaseline />
-        POKEDEX
+        <Provider store={store}>
+          <CssBaseline />
+          POKEDEX
+        </Provider>
       </ThemeProvider>
     </CacheProvider>
   );
