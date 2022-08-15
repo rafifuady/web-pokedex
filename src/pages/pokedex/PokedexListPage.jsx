@@ -1,7 +1,7 @@
 import { Box, CircularProgress, Container, Stack } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { createGradient, createGradientX } from '../../common/utils/createGradient';
+import { createGradientX } from '../../common/utils/createGradient';
 import { PokedexListContainer } from '../../modules/pokedex/containers';
 import PokedexDetailContainer from '../../modules/pokedex/containers/PokedexDetailContainer';
 
