@@ -1,3 +1,8 @@
+# How to clone
+- git clone https://github.com/rafifuady/mweb-pokedex-hisui.git
+- npm install
+- set env 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
