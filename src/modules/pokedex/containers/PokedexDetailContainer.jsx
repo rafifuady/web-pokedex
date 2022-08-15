@@ -2,7 +2,6 @@ import { Box, Container, Stack, Typography, styled } from '@mui/material';
 import { useSelector } from 'react-redux';
 import React from 'react';
 import ButtonTypingPokemon from '../../../common/components/ButtonTypingPokemon';
-import { createGradient } from '../../../common/utils/createGradient';
 
 const TitleBox = styled(Box)(({ theme }) => ({
   width: '100%',
@@ -39,7 +38,7 @@ function PokedexDetailContainer() {
             sx={{ paddingY: '1em' }}
           >
             {detail.types?.map((val, index) => (
-              <ButtonTypingPokemon key={index} type={val.type.name} onClick={()=> console.log('asd')}>
+              <ButtonTypingPokemon key={index} type={val.type.name}>
                 {val.type.name?.toUpperCase()}
               </ButtonTypingPokemon>
             ))}

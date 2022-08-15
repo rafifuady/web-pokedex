@@ -1,7 +1,6 @@
-import { CircularProgress, Container, Paper, Typography, styled, ButtonBase } from '@mui/material';
+import { CircularProgress, Container, Typography, styled, ButtonBase } from '@mui/material';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ButtonTypingPokemon from '../../../common/components/ButtonTypingPokemon';
 import { pokedexActions } from '../_redux/pokedex.actions';
 import { BackgroundScreen } from '../../../common/components/BackgroundScreen';
 
