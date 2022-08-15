@@ -64,7 +64,7 @@ function LandingPage() {
               padding: '2em',
             }}
             alt='Rotom Dex'
-            src='https://archives.bulbagarden.net/media/upload/3/36/479Rotom-Pok%C3%A9dex.png'
+            src='/479Rotom-Pokédex.png'
           />
           <Stack
             p={2}
