@@ -20,10 +20,6 @@
   ],
   "rules": {
     "consistent-return": 2,
-    "curly": [
-      2,
-      "all"
-    ],
     "eol-last": 2,
     "eqeqeq": [
       2,
