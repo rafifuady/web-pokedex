@@ -1,4 +1,4 @@
-import { Paper } from '@mui/material';
+import { CircularProgress, Paper } from '@mui/material';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { pokedexActions } from '../_redux/pokedex.actions';
@@ -39,10 +39,11 @@ function PokedexListContainer() {
   return (
     <div>
       {pokedex.results.map((val, id) => (
-        <Paper key={id} sx={{ margin: '2em' }} ref={lastBookElementRef}>
+        <Paper key={id} sx={{ margin: '2em' }} ref={lastBookElementRef} onClick={()=> console.log(val.name)}>
           {val.name}
         </Paper>
       ))}
+      {pokedex.isLoading && <CircularProgress />}
     </div>
   );
 }
