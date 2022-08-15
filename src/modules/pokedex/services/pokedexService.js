@@ -19,4 +19,8 @@ export class pokedexService extends baseService {
 
     return this.baseGET(`pokemon?${querystring}`, true);
   }
+
+  getDetail(payload) {
+    return this.baseGET(`pokemon/${payload}`);
+  }
 }

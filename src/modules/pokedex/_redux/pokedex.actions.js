@@ -40,6 +40,41 @@ const getList = (payload, prevData) => {
   };
 };
 
+const getDetail = (payload) => {
+  return async (dispatch) => {
+    dispatch({
+      type: pokedexConstants.READ_REQUEST,
+      payload: {
+        isDetailLoading: true,
+        detail: undefined,
+      },
+    });
+
+    const { isError, message, data } = await pokedexServiceInstance.getDetail(
+      payload
+    );
+    if (data) {
+      dispatch({
+        type: pokedexConstants.READ_SUCCESS,
+        payload: {
+          isDetailLoading: false,
+          detail: data,
+        },
+      });
+    } else {
+      dispatch({
+        type: pokedexConstants.LIST_FAILED,
+        payload: {
+          isLoading: false,
+          isError: isError,
+          message: message,
+        },
+      });
+    }
+
+  }
+}
 export const pokedexActions = {
-  getList
+  getList,
+  getDetail
 }
