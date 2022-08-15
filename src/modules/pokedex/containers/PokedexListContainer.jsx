@@ -1,8 +1,20 @@
-import { CircularProgress, Paper } from '@mui/material';
+import { CircularProgress, Container, Paper, Typography, styled, ButtonBase } from '@mui/material';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import ButtonTypingPokemon from '../../../common/components/ButtonTypingPokemon';
 import { pokedexActions } from '../_redux/pokedex.actions';
+import { BackgroundScreen } from '../../../common/components/BackgroundScreen';
+
+const PokemonCard = styled(ButtonBase)(({ theme }) => ({
+  width: '100%',
+  minHeight: '10vh',
+  color: theme.palette.getContrastText('#ede6de'),
+  backgroundColor: '#ede6de',
+  '&:hover': {
+    backgroundColor: '#ebe7ca',
+  },
+  paddingInline: theme.spacing(2),
+}));
 
 function PokedexListContainer() {
   const pokedex = useSelector((state) => state.pokedex);
@@ -39,11 +51,22 @@ function PokedexListContainer() {
 
   return (
     <div>
-      <ButtonTypingPokemon type='grass'>grass</ButtonTypingPokemon>
       {pokedex.results.map((val, id) => (
-        <Paper key={id} sx={{ margin: '2em' }} ref={lastBookElementRef} onClick={()=> dispatch(pokedexActions.getDetail(val.name))}>
-          {val.name}
-        </Paper>
+        <BackgroundScreen
+          key={id}
+          sx={{ margin: '2em' }}
+          ref={lastBookElementRef}
+          onClick={() => dispatch(pokedexActions.getDetail(val.name))}
+        >
+          <PokemonCard>
+            <Container>
+              <Typography component='div'>{id+1}</Typography>
+            </Container>
+            <Container>
+              <Typography component='div'>{val.name.toUpperCase()}</Typography>
+            </Container>
+          </PokemonCard>
+        </BackgroundScreen>
       ))}
       {pokedex.isLoading && <CircularProgress />}
     </div>

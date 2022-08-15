@@ -8,10 +8,7 @@ const TitleBox = styled(Box)(({ theme }) => ({
   width: '100%',
   minHeight: '5vh',
   color: '#ede6de',
-  backgroundColor: '#263a52',
-  '&:hover': {
-    backgroundColor: '#456479',
-  },
+  backgroundColor: '#333333',
   padding: theme.spacing(2),
 }));
 
@@ -21,7 +18,6 @@ function PokedexDetailContainer() {
     <Container
       sx={{
         minHeight: '100vh',
-        background: createGradient('#ede6de', 'gray'),
         paddingY: '2em',
       }}
     >
