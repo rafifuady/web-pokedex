@@ -1,6 +1,7 @@
 import { CircularProgress, Paper } from '@mui/material';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import ButtonTypingPokemon from '../../../common/components/ButtonTypingPokemon';
 import { pokedexActions } from '../_redux/pokedex.actions';
 
 function PokedexListContainer() {
@@ -38,8 +39,9 @@ function PokedexListContainer() {
 
   return (
     <div>
+      <ButtonTypingPokemon type='grass'>grass</ButtonTypingPokemon>
       {pokedex.results.map((val, id) => (
-        <Paper key={id} sx={{ margin: '2em' }} ref={lastBookElementRef} onClick={()=> console.log(val.name)}>
+        <Paper key={id} sx={{ margin: '2em' }} ref={lastBookElementRef} onClick={()=> dispatch(pokedexActions.getDetail(val.name))}>
           {val.name}
         </Paper>
       ))}

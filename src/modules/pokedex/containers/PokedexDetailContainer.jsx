@@ -1,14 +1,5 @@
-import {
-  Box,
-  Container,
-  LinearProgress,
-  Stack,
-  Typography,
-  styled,
-  Button,
-  ListItem,
-  ListItemText,
-} from '@mui/material';
+import { Box, Container, Stack, Typography, styled } from '@mui/material';
+import { useSelector } from 'react-redux';
 import React from 'react';
 import ButtonTypingPokemon from '../../../common/components/ButtonTypingPokemon';
 import { createGradient } from '../../../common/utils/createGradient';
@@ -25,6 +16,7 @@ const TitleBox = styled(Box)(({ theme }) => ({
 }));
 
 function PokedexDetailContainer() {
+  const { detail } = useSelector((state) => state.pokedex);
   return (
     <Container
       sx={{
@@ -41,23 +33,33 @@ function PokedexDetailContainer() {
       >
         <TitleBox>
           <Stack direction='row' spacing={6} justifyContent='center'>
-            <Typography>#001</Typography>
-            <Typography>{'bulbasaur'.toUpperCase()}</Typography>
+            <Typography>#{detail.id}</Typography>
+            <Typography>{detail.name?.toUpperCase()}</Typography>
           </Stack>
           <Stack
             direction='row'
             justifyContent='center'
             spacing={6}
-            sx={{ paddingTop: '1em' }}
+            sx={{ paddingY: '1em' }}
           >
-            <ButtonTypingPokemon key={1} type={'grass'}>
-              {'grass'.toUpperCase()}
-            </ButtonTypingPokemon>
+            {detail.types?.map((val, index) => (
+              <ButtonTypingPokemon key={index} type={val.type.name} onClick={()=> console.log('asd')}>
+                {val.type.name?.toUpperCase()}
+              </ButtonTypingPokemon>
+            ))}
+          </Stack>
+          <Stack direction='row' spacing={6} justifyContent='center'>
+            {detail.abilities.map((val) => (
+              <Typography key={val.ability.name}>
+                {val.ability.name.toUpperCase()}
+              </Typography>
+            ))}
           </Stack>
         </TitleBox>
         <Box sx={{ maxHeight: '150', maxWidth: '150' }}>
           <img
             style={{ height: '146px', width: 'auto', padding: '1px' }}
+            src={detail.sprites?.front_default}
             alt='front_default'
           />
         </Box>
